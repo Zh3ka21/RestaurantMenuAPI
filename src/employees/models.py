@@ -15,7 +15,7 @@ class Employee(Base):
     password = Column(String, nullable=False)
 
     @validates("name")
-    def validate_name(self, key, name):
+    def validate_name(self, key: int, name: str) -> str:
         """Ensure name is not empty."""
         if not name:
             raise ValueError("Employee name cannot be empty")

@@ -16,6 +16,7 @@ from src.votes.router import router as vote_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    """Create database tables."""
     create_tables()
     yield
 

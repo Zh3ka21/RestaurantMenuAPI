@@ -3,12 +3,18 @@
 from pydantic import BaseModel
 
 
-class RestaurantCreate(BaseModel):  # noqa: D101
+class RestaurantCreate(BaseModel):
+    """Restaurant model schema."""
+
     name: str
 
 
-class RestaurantResponse(RestaurantCreate):  # noqa: D101
+class RestaurantResponse(RestaurantCreate):
+    """Restaurant model Response schema."""
+
     id: int
 
-    class Config:  # noqa: D106
+    class Config:
+        """Config to use orm."""
+
         orm_mode = True

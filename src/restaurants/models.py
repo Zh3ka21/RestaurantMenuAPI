@@ -17,7 +17,7 @@ class Restaurant(Base):
     menus = relationship("Menu", back_populates="restaurant")
 
     @validates("name")
-    def validate_name(self, key, name):
+    def validate_name(self, key: int, name: str) -> str:
         """Ensure restaurant name is not empty."""
         if not name:
             raise ValueError("Restaurant name cannot be empty")

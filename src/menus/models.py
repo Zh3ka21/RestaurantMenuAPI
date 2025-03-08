@@ -27,7 +27,7 @@ class Menu(Base):
     )
 
     @validates("items")
-    def validate_items(self, key, items):
+    def validate_items(self, key: int, items: str) -> str:
         """Ensure menu has items."""
         if not items:
             raise ValueError("Menu items cannot be empty")

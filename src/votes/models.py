@@ -24,14 +24,14 @@ class Vote(Base):
     )
 
     @validates("employee_id")
-    def validate_employee(self, key, employee_id):
+    def validate_employee(self, key: int, employee_id: int) -> int:
         """Ensure employee_id exists."""
         if not employee_id:
             raise ValueError("Employee ID cannot be empty")
         return employee_id
 
     @validates("menu_id")
-    def validate_menu(self, key, menu_id):
+    def validate_menu(self, key: int, menu_id: int) -> int:
         """Ensure menu_id exists."""
         if not menu_id:
             raise ValueError("Menu ID cannot be empty")

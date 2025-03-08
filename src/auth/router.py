@@ -15,7 +15,7 @@ router = APIRouter()
 def login(
     form_data: OAuth2PasswordRequestForm = Depends(),
     db: Session = Depends(get_db),
-):
+) -> dict:
     """Login into Employee account and return a JWT token."""
     db_employee = db.query(Employee).filter(Employee.name == form_data.username).first()
 
