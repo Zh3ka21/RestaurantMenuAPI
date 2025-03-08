@@ -39,7 +39,7 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
 
 def authenticate_user(db: Session, username: str, password: str):
     user = db.query(Employee).filter(Employee.username == username).first()
-    if not user or not verify_password(password, user.hashed_password):  # type: ignore
+    if not user or not verify_password(password, user.password):  # type: ignore
         return None
     return user
 

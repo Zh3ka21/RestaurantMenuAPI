@@ -12,7 +12,7 @@ class Employee(Base):
     __tablename__ = "employees"
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, index=True)
-    hashed_password = Column(String, nullable=False)
+    password = Column(String, nullable=False)
 
     @validates("name")
     def validate_name(self, key, name):

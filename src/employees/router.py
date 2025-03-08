@@ -22,8 +22,8 @@ def create_employee(employee: EmployeeCreate, db: Session = Depends(get_db)) -> 
         raise HTTPException(status_code=400, detail="Employee already exists")
 
     # Create new employee
-    hashed_password = hash_password(employee.hashed_password)
-    new_employee = Employee(name=employee.name, hashed_password=hashed_password)
+    hashed_password = hash_password(employee.password)
+    new_employee = Employee(name=employee.name, password=hashed_password)
 
     db.add(new_employee)
     try:

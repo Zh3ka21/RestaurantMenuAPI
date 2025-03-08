@@ -25,7 +25,7 @@ def create_menu_endpoint(
 # Get current day's menu
 @router.get("/menu/today/", response_model=MenuResponse)
 def get_today_menu_endpoint(
-    db: Session = Depends(get_db), current_user: Employee = Depends(get_current_user)
+    db: Session = Depends(get_db), current_user: Employee = Depends(get_current_user),
 ) -> MenuResponse:
     """Menu for current day endpoint."""
     db_menu = get_today_menu(db)

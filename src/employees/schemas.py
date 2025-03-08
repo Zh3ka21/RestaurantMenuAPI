@@ -9,11 +9,11 @@ class EmployeeBase(BaseModel):
 
 
 class EmployeeCreate(EmployeeBase):
-    hashed_password: str
+    password: str
 
 
 class UserInDB(EmployeeCreate):
-    hashed_password: str
+    password: str
 
 
 class EmployeeResponse(EmployeeBase):

@@ -42,6 +42,8 @@ build-backend = "poetry.core.masonry.api"
 line-length = 120
 target-version = "py312"
 src = ["src"]
+exclude = ["tests"]
+
 
 [tool.ruff.lint]
 # These are the checks you want to enable
@@ -49,7 +51,7 @@ select = [
     "F", "I", "W", "E", "N", "D", "S", "ANN", "ARG", "B", "C4", "E", "ERA", "ISC", "PD", "PIE", "PL", "PT", "RET", "SIM", "TCH", "UP",
     "W", "BLE", "FBT", "B", "A", "COM", "DTZ", "ICN", "G", "INP", "T20", "RSE", "SLF", "PTH", "TD", "PGH", "PERF", "FURB", "RUF"
 ]
-ignore = ["D203", "D211", "D212", "D213"] # Ignore specific PEP8 errors
+ignore = ["D203", "D211", "D212", "D213", "B008"] # Ignore specific PEP8 errors
 
 # Mypy configuration (adjusted for FastAPI)
 [tool.mypy]

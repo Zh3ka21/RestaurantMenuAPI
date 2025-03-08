@@ -22,7 +22,7 @@ class Menu(Base):
     __table_args__ = (
         UniqueConstraint("restaurant_id", "date", name="unique_menu"),
         ForeignKeyConstraint(
-            ["restaurant_id"], ["restaurants.id"], ondelete="CASCADE"
+            ["restaurant_id"], ["restaurants.id"], ondelete="CASCADE",
         ),  # Ensure menu is linked to a valid restaurant
     )
 
