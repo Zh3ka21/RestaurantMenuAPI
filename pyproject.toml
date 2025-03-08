@@ -1,0 +1,70 @@
+[tool.poetry]
+name = "restaurantmenuapi"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.115.11"
+uvicorn = "^0.34.0"
+sqlalchemy = "^2.0.18"
+psycopg2-binary = "^2.9.5"
+pydantic = "^1.10.9"
+aiohttp = "^3.8.1"
+python-jose = "^3.3.0"
+passlib = "^1.7.4"
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+isort = "^6.0.1"
+mypy = "^1.15.0"
+ruff = "^0.9.10"
+pre-commit = "^4.1.0"
+flake8 = "^6.0.0"
+pytest = "^7.2.2"
+pytest-asyncio = "^0.20.3"
+httpx = "^0.24.1"
+flake8-docstrings = "^1.7.0"
+flake8-bugbear = "^23.3.23"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+# Ruff configuration
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+src = ["src"]
+
+[tool.ruff.lint]
+# These are the checks you want to enable
+select = [
+    "F", "I", "W", "E", "N", "D", "S", "ANN", "ARG", "B", "C4", "E", "ERA", "ISC", "PD", "PIE", "PL", "PT", "RET", "SIM", "TCH", "UP",
+    "W", "BLE", "FBT", "B", "A", "COM", "DTZ", "ICN", "G", "INP", "T20", "RSE", "SLF", "PTH", "TD", "PGH", "PERF", "FURB", "RUF"
+]
+ignore = ["D203", "D211", "D212", "D213"] # Ignore specific PEP8 errors
+
+# Mypy configuration (adjusted for FastAPI)
+[tool.mypy]
+files = "src"
+ignore_missing_imports = true  # Ignore missing imports (useful for third-party libraries)
+warn_redundant_casts = true
+show_error_codes = true
+plugins = []  # No Django plugin for FastAPI
+
+# Black configuration (with a line length of 120)
+[tool.black]
+line-length = 120
+
+# Isort configuration (compatible with Black)
+[tool.isort]
+profile = "black"
+line_length = 120
+known_third_party = ["fastapi", "uvicorn"]
+
+# Pre-commit configuration (hooks for linting/formatting)
+[tool.pre-commit]
+# Use default pre-commit hooks, no need for any changes here unless you want custom ones
