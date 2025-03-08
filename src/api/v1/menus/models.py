@@ -4,7 +4,6 @@ from datetime import date
 
 from sqlalchemy import Column, Date, ForeignKey, ForeignKeyConstraint, Integer, String, UniqueConstraint
 from sqlalchemy.orm import relationship, validates
-
 from src.database import Base
 
 
@@ -22,7 +21,9 @@ class Menu(Base):
     __table_args__ = (
         UniqueConstraint("restaurant_id", "date", name="unique_menu"),
         ForeignKeyConstraint(
-            ["restaurant_id"], ["restaurants.id"], ondelete="CASCADE",
+            ["restaurant_id"],
+            ["restaurants.id"],
+            ondelete="CASCADE",
         ),  # Ensure menu is linked to a valid restaurant
     )
 

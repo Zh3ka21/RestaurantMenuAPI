@@ -6,12 +6,12 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.security import OAuth2PasswordBearer
 
-from src.auth.router import router as auth_router
+from src.api.v1.auth.router import router as auth_router
+from src.api.v1.employees.router import router as employee_router
+from src.api.v1.menus.router import router as menu_router
+from src.api.v1.restaurants.router import router as restaurant_router
+from src.api.v1.votes.router import router as vote_router
 from src.database import create_tables
-from src.employees.router import router as employee_router
-from src.menus.router import router as menu_router
-from src.restaurants.router import router as restaurant_router
-from src.votes.router import router as vote_router
 
 
 @asynccontextmanager

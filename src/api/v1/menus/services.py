@@ -5,10 +5,9 @@ from datetime import date
 from fastapi import HTTPException, status
 from sqlalchemy import func
 from sqlalchemy.orm import Session
-
-from src.menus.models import Menu
-from src.menus.schemas import MenuCreate
-from src.votes.models import Vote
+from src.api.v1.menus.models import Menu
+from src.api.v1.menus.schemas import MenuCreate
+from src.api.v1.votes.models import Vote
 
 
 def create_menu(menu_data: MenuCreate, db: Session) -> Menu:

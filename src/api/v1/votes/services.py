@@ -4,10 +4,9 @@ from datetime import date
 
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
-
-from src.employees.models import Employee
-from src.votes.models import Vote
-from src.votes.schemas import VoteCreate
+from src.api.v1.employees.models import Employee
+from src.api.v1.votes.models import Vote
+from src.api.v1.votes.schemas import VoteCreate
 
 
 def create_vote(vote_data: VoteCreate, db: Session, current_user: Employee) -> Vote:

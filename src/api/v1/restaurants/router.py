@@ -2,10 +2,9 @@
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-
+from src.api.v1.restaurants.schemas import RestaurantCreate, RestaurantResponse
+from src.api.v1.restaurants.services import create_restaurant
 from src.database import get_db
-from src.restaurants.schemas import RestaurantCreate, RestaurantResponse
-from src.restaurants.services import create_restaurant
 
 router = APIRouter()
 

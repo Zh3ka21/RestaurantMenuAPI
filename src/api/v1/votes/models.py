@@ -4,7 +4,6 @@ from datetime import date
 
 from sqlalchemy import Column, Date, ForeignKey, ForeignKeyConstraint, Integer, UniqueConstraint
 from sqlalchemy.orm import validates
-
 from src.database import Base
 
 

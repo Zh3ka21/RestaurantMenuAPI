@@ -4,13 +4,12 @@ from datetime import date
 
 from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
-
-from src.auth.utils import get_current_user
+from src.api.v1.auth.utils import get_current_user
+from src.api.v1.employees.models import Employee
+from src.api.v1.votes.models import Vote
+from src.api.v1.votes.schemas import VoteCreate, VoteResponse
+from src.api.v1.votes.services import create_vote
 from src.database import get_db
-from src.employees.models import Employee
-from src.votes.models import Vote
-from src.votes.schemas import VoteCreate, VoteResponse
-from src.votes.services import create_vote
 
 router = APIRouter()
 

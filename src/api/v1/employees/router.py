@@ -3,11 +3,10 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
-
-from src.auth.utils import hash_password
+from src.api.v1.auth.utils import hash_password
+from src.api.v1.employees.models import Employee
+from src.api.v1.employees.schemas import EmployeeCreate, EmployeeResponse
 from src.database import get_db
-from src.employees.models import Employee
-from src.employees.schemas import EmployeeCreate, EmployeeResponse
 
 router = APIRouter()
 

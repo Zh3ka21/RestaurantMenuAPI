@@ -8,9 +8,8 @@ from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from sqlalchemy.orm import Session
-
+from src.api.v1.employees.models import Employee
 from src.database import get_db
-from src.employees.models import Employee
 
 SECRET_KEY = os.getenv("SECRET_KEY", "KEY")
 ALGORITHM = os.getenv("ALGORITHM", "")
@@ -26,9 +25,11 @@ def hash_password(password: str) -> str:
     """Hash function."""
     return pwd_context.hash(password)
 
+
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     """Verification of plain and hashed password function."""
     return pwd_context.verify(plain_password, hashed_password)
+
 
 def create_access_token(data: dict, expires_delta: timedelta | None = None) -> jwt:
     """Creation jwt token function."""
@@ -36,6 +37,7 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None) -> j
     expire = datetime.utcnow() + (expires_delta or timedelta(minutes=float(ACCESS_TOKEN_EXPIRE_MINUTES)))
     to_encode.update({"exp": expire})
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+
 
 def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)) -> Employee:
     """Extract user from JWT token."""

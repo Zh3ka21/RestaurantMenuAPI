@@ -2,7 +2,6 @@
 
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship, validates
-
 from src.database import Base
 
 

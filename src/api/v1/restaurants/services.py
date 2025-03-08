@@ -1,9 +1,8 @@
 """Services file."""
 
 from sqlalchemy.orm import Session
-
-from src.restaurants.models import Restaurant
-from src.restaurants.schemas import RestaurantCreate
+from src.api.v1.restaurants.models import Restaurant
+from src.api.v1.restaurants.schemas import RestaurantCreate
 
 
 def create_restaurant(restaurant_data: RestaurantCreate, db: Session) -> Restaurant:
