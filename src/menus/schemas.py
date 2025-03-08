@@ -13,6 +13,7 @@ class MenuCreate(BaseModel):  # noqa: D101
     class Config:  # noqa: D106
         orm_mode = True
 
+
 class MenuResponse(BaseModel):  # noqa: D101
     id: int
     restaurant_id: int

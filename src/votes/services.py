@@ -13,9 +13,14 @@ from src.votes.schemas import VoteCreate
 def create_vote(vote_data: VoteCreate, db: Session, current_user: Employee) -> Vote:
     """Create a vote."""
     today = date.today()
-    existing_vote = db.query(Vote).filter(
-        Vote.employee_id == current_user.id, Vote.date == today,
-    ).first()
+    existing_vote = (
+        db.query(Vote)
+        .filter(
+            Vote.employee_id == current_user.id,
+            Vote.date == today,
+        )
+        .first()
+    )
 
     if existing_vote:
         raise HTTPException(

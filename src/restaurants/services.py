@@ -1,6 +1,5 @@
 """Services file."""
 
-
 from sqlalchemy.orm import Session
 
 from src.restaurants.models import Restaurant

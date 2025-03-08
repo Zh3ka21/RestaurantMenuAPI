@@ -6,6 +6,7 @@ from pydantic import BaseModel
 class RestaurantCreate(BaseModel):  # noqa: D101
     name: str
 
+
 class RestaurantResponse(RestaurantCreate):  # noqa: D101
     id: int
 

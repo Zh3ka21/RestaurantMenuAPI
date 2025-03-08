@@ -1,6 +1,5 @@
 """Routers for authentication."""
 
-
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
@@ -11,16 +10,17 @@ from src.employees.models import Employee
 
 router = APIRouter()
 
+
 # Login endpoint example
 @router.post("/login/")
 def login(
     form_data: OAuth2PasswordRequestForm = Depends(),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
     """Login into Employee account and return a JWT token."""
     db_employee = db.query(Employee).filter(Employee.name == form_data.username).first()
 
-    if not db_employee or not verify_password(form_data.password, db_employee.hashed_password): #type: ignore
+    if not db_employee or not verify_password(form_data.password, db_employee.hashed_password):  # type: ignore
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid credentials",

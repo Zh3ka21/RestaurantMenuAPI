@@ -21,10 +21,12 @@ class Menu(Base):
 
     __table_args__ = (
         UniqueConstraint("restaurant_id", "date", name="unique_menu"),
-        ForeignKeyConstraint(['restaurant_id'], ['restaurants.id'], ondelete='CASCADE'),  # Ensure menu is linked to a valid restaurant
+        ForeignKeyConstraint(
+            ["restaurant_id"], ["restaurants.id"], ondelete="CASCADE"
+        ),  # Ensure menu is linked to a valid restaurant
     )
 
-    @validates('items')
+    @validates("items")
     def validate_items(self, key, items):
         """Ensure menu has items."""
         if not items:

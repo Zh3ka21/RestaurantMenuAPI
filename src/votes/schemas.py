@@ -1,6 +1,5 @@
 """Schema votes."""
 
-
 from datetime import date
 
 from pydantic import BaseModel

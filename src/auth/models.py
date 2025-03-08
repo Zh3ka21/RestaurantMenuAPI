@@ -5,9 +5,8 @@
 from dotenv import load_dotenv
 from pydantic import BaseModel
 
-from src.auth.utils import get_password_hash, verify_password
-
 load_dotenv()
+
 
 class Token(BaseModel):
     """Token value data."""
@@ -15,9 +14,9 @@ class Token(BaseModel):
     access_token: str
     username: str
 
+
 class TokenData(BaseModel):
     username: str | None = None
-
 
 
 # def authenticate_user(fake_db, username: str, password: str):

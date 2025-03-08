@@ -9,9 +9,11 @@ from src.restaurants.services import create_restaurant
 
 router = APIRouter()
 
+
 @router.post("/restaurants/", response_model=RestaurantResponse)
 def create_restaurant_endpoint(
-    restaurant: RestaurantCreate, db: Session = Depends(get_db),
+    restaurant: RestaurantCreate,
+    db: Session = Depends(get_db),
 ) -> RestaurantResponse:
     """Restaurant create view."""
     return create_restaurant(restaurant, db)

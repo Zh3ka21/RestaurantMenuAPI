@@ -20,6 +20,7 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 # Create a DeclarativeMeta instance
 Base = declarative_base()
 
+
 def get_db() -> Generator[Session, None, None]:
     """Dependency function that provides a database session."""
     db = SessionLocal()
@@ -27,6 +28,7 @@ def get_db() -> Generator[Session, None, None]:
         yield db
     finally:
         db.close()
+
 
 def create_tables() -> None:
     """Create all tables in the database."""

@@ -30,6 +30,7 @@ app.include_router(vote_router)
 app.include_router(employee_router)
 app.include_router(auth_router)
 
+
 @app.get("/")
 def read_root():
     return {"message": "Hello, FastAPI!"}

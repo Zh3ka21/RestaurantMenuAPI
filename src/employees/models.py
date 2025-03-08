@@ -14,7 +14,7 @@ class Employee(Base):
     name = Column(String, unique=True, index=True)
     hashed_password = Column(String, nullable=False)
 
-    @validates('name')
+    @validates("name")
     def validate_name(self, key, name):
         """Ensure name is not empty."""
         if not name:

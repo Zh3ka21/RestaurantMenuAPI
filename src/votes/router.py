@@ -14,11 +14,12 @@ from src.votes.services import create_vote
 
 router = APIRouter()
 
+
 @router.post("/votes/", response_model=VoteResponse, status_code=status.HTTP_201_CREATED)
 def create_vote_endpoint(
     vote_data: VoteCreate,
     db: Session = Depends(get_db),
-    current_user: Employee = Depends(get_current_user)
+    current_user: Employee = Depends(get_current_user),
 ) -> Vote:
     """Vote creating endpoint."""
     return create_vote(vote_data, db, current_user)

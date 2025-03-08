@@ -1,6 +1,5 @@
 """Vote model."""
 
-
 from datetime import date
 
 from sqlalchemy import Column, Date, ForeignKey, ForeignKeyConstraint, Integer, UniqueConstraint
@@ -20,18 +19,18 @@ class Vote(Base):
 
     __table_args__ = (
         UniqueConstraint("employee_id", "date", name="unique_vote"),
-        ForeignKeyConstraint(['employee_id'], ['employees.id'], ondelete='CASCADE'),  # Ensure the employee exists
-        ForeignKeyConstraint(['menu_id'], ['menus.id'], ondelete='CASCADE'),  # Ensure the menu exists
+        ForeignKeyConstraint(["employee_id"], ["employees.id"], ondelete="CASCADE"),  # Ensure the employee exists
+        ForeignKeyConstraint(["menu_id"], ["menus.id"], ondelete="CASCADE"),  # Ensure the menu exists
     )
 
-    @validates('employee_id')
+    @validates("employee_id")
     def validate_employee(self, key, employee_id):
         """Ensure employee_id exists."""
         if not employee_id:
             raise ValueError("Employee ID cannot be empty")
         return employee_id
 
-    @validates('menu_id')
+    @validates("menu_id")
     def validate_menu(self, key, menu_id):
         """Ensure menu_id exists."""
         if not menu_id:

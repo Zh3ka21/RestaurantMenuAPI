@@ -7,11 +7,14 @@ from pydantic import BaseModel
 class EmployeeBase(BaseModel):
     name: str
 
+
 class EmployeeCreate(EmployeeBase):
     hashed_password: str
 
+
 class UserInDB(EmployeeCreate):
     hashed_password: str
+
 
 class EmployeeResponse(EmployeeBase):
     id: int

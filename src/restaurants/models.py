@@ -16,7 +16,7 @@ class Restaurant(Base):
     # Defining a relationship with the 'Menu' model
     menus = relationship("Menu", back_populates="restaurant")
 
-    @validates('name')
+    @validates("name")
     def validate_name(self, key, name):
         """Ensure restaurant name is not empty."""
         if not name:

@@ -5,12 +5,12 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from src.auth.utils import hash_password
-from src.config import pwd_context
 from src.database import get_db
 from src.employees.models import Employee
 from src.employees.schemas import EmployeeCreate, EmployeeResponse
 
 router = APIRouter()
+
 
 @router.post("/employees/", response_model=EmployeeResponse)
 def create_employee(employee: EmployeeCreate, db: Session = Depends(get_db)) -> EmployeeResponse:
@@ -32,4 +32,4 @@ def create_employee(employee: EmployeeCreate, db: Session = Depends(get_db)) -> 
     except IntegrityError as ie:
         db.rollback()
         raise HTTPException(status_code=400, detail="Error creating employee") from ie
-    return EmployeeResponse(id=new_employee.id, name=new_employee.name) #type: ignore
+    return EmployeeResponse(id=new_employee.id, name=new_employee.name)  # type: ignore

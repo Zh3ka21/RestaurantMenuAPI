@@ -1,6 +1,5 @@
 """Services file."""
 
-
 from datetime import date
 
 from fastapi import HTTPException, status
@@ -25,6 +24,7 @@ def create_menu(menu_data: MenuCreate, db: Session) -> Menu:
     db.commit()
     db.refresh(menu)
     return menu
+
 
 def get_today_menu(db: Session) -> Menu:
     """Get today's menu based on the highest number of votes."""
