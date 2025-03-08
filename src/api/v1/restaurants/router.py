@@ -1,6 +1,7 @@
 """Routers.py file."""
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 from src.api.v1.restaurants.schemas import RestaurantCreate, RestaurantResponse
 from src.api.v1.restaurants.services import create_restaurant
@@ -15,4 +16,13 @@ def create_restaurant_endpoint(
     db: Session = Depends(get_db),
 ) -> RestaurantResponse:
     """Restaurant create view."""
-    return create_restaurant(restaurant, db)
+    try:
+        return create_restaurant(restaurant, db)
+    except HTTPException as http_exc:
+        raise http_exc  # Re-raise known HTTP errors
+    except SQLAlchemyError as se:
+        raise HTTPException(
+            status_code=500, detail="Database error occurred while creating restaurant"
+        ) from se
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e!s}") from e
