@@ -14,7 +14,10 @@ psycopg2-binary = "^2.9.5"
 pydantic = "^1.10.9"
 aiohttp = "^3.8.1"
 python-jose = "^3.3.0"
+pyjwt = "^2.10.1"
+bcrypt = "^4.3.0"
 passlib = "^1.7.4"
+python-dotenv = "^1.0.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
@@ -28,6 +31,7 @@ pytest-asyncio = "^0.20.3"
 httpx = "^0.24.1"
 flake8-docstrings = "^1.7.0"
 flake8-bugbear = "^23.3.23"
+python-multipart = "^0.0.20"
 
 [build-system]
 requires = ["poetry-core"]
@@ -38,6 +42,8 @@ build-backend = "poetry.core.masonry.api"
 line-length = 120
 target-version = "py312"
 src = ["src"]
+exclude = ["tests"]
+
 
 [tool.ruff.lint]
 # These are the checks you want to enable
@@ -45,7 +51,7 @@ select = [
     "F", "I", "W", "E", "N", "D", "S", "ANN", "ARG", "B", "C4", "E", "ERA", "ISC", "PD", "PIE", "PL", "PT", "RET", "SIM", "TCH", "UP",
     "W", "BLE", "FBT", "B", "A", "COM", "DTZ", "ICN", "G", "INP", "T20", "RSE", "SLF", "PTH", "TD", "PGH", "PERF", "FURB", "RUF"
 ]
-ignore = ["D203", "D211", "D212", "D213"] # Ignore specific PEP8 errors
+ignore = ["D203", "D211", "D212", "D213", "B008"] # Ignore specific PEP8 errors
 
 # Mypy configuration (adjusted for FastAPI)
 [tool.mypy]
