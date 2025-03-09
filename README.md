@@ -109,7 +109,7 @@ Authorization: Bearer {token}
 
 ```json
 {
-  "id": "uuid",
+  "id": "id",
   "name": "string"
 }
 ```
@@ -118,8 +118,8 @@ Authorization: Bearer {token}
 
 ```json
 {
-  "id": "uuid",
-  "restaurant_id": "uuid",
+  "id": "id",
+  "restaurant_id": "id",
   "date": "date",
   "items": "string"
 }
@@ -129,7 +129,7 @@ Authorization: Bearer {token}
 
 ```json
 {
-  "id": "uuid",
+  "id": "id",
   "username": "string",
   "password": "string"
 }
@@ -139,9 +139,9 @@ Authorization: Bearer {token}
 
 ```json
 {
-  "id": "uuid",
-  "employee_id": "uuid",
-  "menu_id": "uuid",
+  "id": "id",
+  "employee_id": "id",
+  "menu_id": "id",
   "date": "date"
 }
 ```
