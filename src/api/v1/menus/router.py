@@ -26,17 +26,20 @@ def create_menu_endpoint(
     except IntegrityError as ie:
         db.rollback()
         raise HTTPException(
-            status_code=400, detail="Database integrity error: Possible duplicate entry"
+            status_code=400,
+            detail="Database integrity error: Possible duplicate entry",
         ) from ie
     except SQLAlchemyError as se:
         db.rollback()
         raise HTTPException(
-            status_code=500, detail="Database error occurred while creating menu"
+            status_code=500,
+            detail="Database error occurred while creating menu",
         ) from se
     except Exception as e:
         db.rollback()
         raise HTTPException(
-            status_code=500, detail=f"Unexpected error: {e!s}"
+            status_code=500,
+            detail=f"Unexpected error: {e!s}",
         ) from e
 
 
@@ -55,9 +58,11 @@ def get_today_menu_endpoint(
         raise http_exc  # Re-raise known HTTP errors
     except SQLAlchemyError as se:
         raise HTTPException(
-            status_code=500, detail="Database error occurred while retrieving today's menu"
+            status_code=500,
+            detail="Database error occurred while retrieving today's menu",
         ) from se
     except Exception as e:
         raise HTTPException(
-            status_code=500, detail=f"Unexpected error: {e!s}"
+            status_code=500,
+            detail=f"Unexpected error: {e!s}",
         ) from e

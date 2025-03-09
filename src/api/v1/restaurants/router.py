@@ -22,7 +22,8 @@ def create_restaurant_endpoint(
         raise http_exc  # Re-raise known HTTP errors
     except SQLAlchemyError as se:
         raise HTTPException(
-            status_code=500, detail="Database error occurred while creating restaurant"
+            status_code=500,
+            detail="Database error occurred while creating restaurant",
         ) from se
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e!s}") from e

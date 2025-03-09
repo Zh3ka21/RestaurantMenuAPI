@@ -34,17 +34,20 @@ def create_employee(employee: EmployeeCreate, db: Session = Depends(get_db)) -> 
     except IntegrityError as ie:
         db.rollback()
         raise HTTPException(
-            status_code=400, detail="Database integrity error: Possible duplicate entry",
+            status_code=400,
+            detail="Database integrity error: Possible duplicate entry",
         ) from ie
 
     except SQLAlchemyError as se:
         db.rollback()
         raise HTTPException(
-            status_code=500, detail="Database error occurred",
+            status_code=500,
+            detail="Database error occurred",
         ) from se
 
     except Exception as e:
         db.rollback()
         raise HTTPException(
-            status_code=500, detail=f"Unexpected error: {e!s}",
+            status_code=500,
+            detail=f"Unexpected error: {e!s}",
         ) from e

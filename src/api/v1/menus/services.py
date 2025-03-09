@@ -7,11 +7,17 @@ from sqlalchemy import func
 from sqlalchemy.orm import Session
 from src.api.v1.menus.models import Menu
 from src.api.v1.menus.schemas import MenuCreate
+from src.api.v1.restaurants.models import Restaurant
 from src.api.v1.votes.models import Vote
 
 
 def create_menu(menu_data: MenuCreate, db: Session) -> Menu:
     """Create a menu function."""
+    # Check if the restaurant with the given id exists
+    restaurant = db.query(Restaurant).filter(Restaurant.id == menu_data.restaurant_id).first()
+    if not restaurant:
+        raise ValueError(f"Menu cannot exist without a valid restaurant with ID {menu_data.restaurant_id}")
+
     # Create a new Menu instance
     menu = Menu(
         restaurant_id=menu_data.restaurant_id,
