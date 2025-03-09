@@ -214,3 +214,18 @@ Install dependencies
 ```
   poetry shell
 ```
+
+# Run locally using
+
+Either:
+
+```
+  poetry run uvicorn src.main:app --reload
+```
+
+Or:
+
+```
+  docker-compose build
+  docker-compose up
+```
